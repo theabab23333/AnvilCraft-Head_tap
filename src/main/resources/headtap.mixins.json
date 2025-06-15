@@ -1,10 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.theabab2333.headtap.mixin",
+  "package": "me.theabab2333.head_tap.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "headtap.refmap.json",
+  "refmap": "skyland_extend.refmap.json",
   "mixins": [
+    "CapabilitiesEventListenerMixin",
     "TagModificationMixin"
   ],
   "client": [
