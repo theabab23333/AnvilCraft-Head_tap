@@ -1,5 +1,6 @@
 package me.theabab2333.head_tap.anvil;
 
+import appeng.core.definitions.AEBlocks;
 import dev.dubhe.anvilcraft.api.anvil.IAnvilBehavior;
 import dev.dubhe.anvilcraft.api.event.anvil.AnvilFallOnLandEvent;
 import net.minecraft.core.BlockPos;
@@ -30,22 +31,45 @@ public class HitBuddingBlockBehavior implements IAnvilBehavior {
         BlockPos blockpos = hitBlockPos.relative(direction);
         BlockState blockstate = level.getBlockState(blockpos);
         Block block = null;
-        if (canClusterGrowAtState(blockstate)) {
-            block = Blocks.SMALL_AMETHYST_BUD;
-        } else if (blockstate.is(Blocks.SMALL_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
-            block = Blocks.MEDIUM_AMETHYST_BUD;
-        } else if (blockstate.is(Blocks.MEDIUM_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
-            block = Blocks.LARGE_AMETHYST_BUD;
-        } else if (blockstate.is(Blocks.LARGE_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
-            block = Blocks.AMETHYST_CLUSTER;
-        }
+        Block hitBlock = hitBlockState.getBlock();
 
-        if (block != null) {
-            BlockState blockstate1 = (BlockState)((BlockState)block
-                .defaultBlockState()
-                .setValue(AmethystClusterBlock.FACING, direction))
-                .setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
-            level.setBlockAndUpdate(blockpos, blockstate1);
+        if (hitBlock == Blocks.BUDDING_AMETHYST) {
+            if (canClusterGrowAtState(blockstate)) {
+                block = Blocks.SMALL_AMETHYST_BUD;
+            } else if (blockstate.is(Blocks.SMALL_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
+                block = Blocks.MEDIUM_AMETHYST_BUD;
+            } else if (blockstate.is(Blocks.MEDIUM_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
+                block = Blocks.LARGE_AMETHYST_BUD;
+            } else if (blockstate.is(Blocks.LARGE_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
+                block = Blocks.AMETHYST_CLUSTER;
+            }
+
+            if (block != null) {
+                BlockState blockstate1 = (BlockState)((BlockState)block
+                    .defaultBlockState()
+                    .setValue(AmethystClusterBlock.FACING, direction))
+                    .setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
+                level.setBlockAndUpdate(blockpos, blockstate1);
+            }
+        }
+        if (hitBlock == AEBlocks.FLAWLESS_BUDDING_QUARTZ.block() || hitBlock == AEBlocks.FLAWED_BUDDING_QUARTZ.block() || hitBlock == AEBlocks.CHIPPED_BUDDING_QUARTZ.block() || hitBlock == AEBlocks.DAMAGED_BUDDING_QUARTZ.block()) {
+            if (canClusterGrowAtState(blockstate)) {
+                block = AEBlocks.SMALL_QUARTZ_BUD.block();
+            } else if (blockstate.is(AEBlocks.SMALL_QUARTZ_BUD.block()) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
+                block = AEBlocks.MEDIUM_QUARTZ_BUD.block();
+            } else if (blockstate.is(Blocks.MEDIUM_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
+                block = AEBlocks.LARGE_QUARTZ_BUD.block();
+            } else if (blockstate.is(Blocks.LARGE_AMETHYST_BUD) && blockstate.getValue(AmethystClusterBlock.FACING) == direction) {
+                block = AEBlocks.QUARTZ_CLUSTER.block();
+            }
+
+            if (block != null) {
+                BlockState blockstate1 = (BlockState)((BlockState)block
+                    .defaultBlockState()
+                    .setValue(AmethystClusterBlock.FACING, direction))
+                    .setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
+                level.setBlockAndUpdate(blockpos, blockstate1);
+            }
         }
 
         return false;
