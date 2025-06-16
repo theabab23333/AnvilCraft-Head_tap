@@ -18,4 +18,7 @@ dependencies {
     // Jade & Patchouli
     runtimeOnly("maven.modrinth:jade:15.10.0+neoforge")
     runtimeOnly("maven.modrinth:patchouli:1.21-87-neoforge")
+
+    //Modpack-AE2&Guideme
+    implementation("org.appliedenergistics:appliedenergistics2:${ae2_version}")
 }
