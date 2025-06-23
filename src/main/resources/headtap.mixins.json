@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.theabab2333.headtap.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "headtap.refmap.json",
+  "mixins": [
+    "TagModificationMixin",
+    "CapabilitiesEventListenerMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "block.headtap.amethyst_anvil": "Amethyst Anvil",
+  "block.headtap.resin_fluid_cauldron": "Resin Fluid Cauldron",
+  "block.headtap.stone_generator": "Stone Generator",
+  "gui.head_tap.category.stone_generator": "Stone Generator",
+  "item.head_tap.amethyst_hammer.tooltip": "Fragile crystal, deals more damage.",
+  "item.head_tap.golem_craftbow.golem_fail": "Don't have enough materials to craft a golem.",
+  "item.head_tap.golem_craftbow.tooltip": "Right click to heal nearby Iron Golems with Iron Ingots. \n Shift + Right click to summon golems with material blocks.",
+  "item.headtap.amethyst_hammer": "Amethyst Hammer",
+  "item.headtap.golem_craftbow": "Golem Craftbow",
+  "item.headtap.resin_fluid_bucket": "Resin Fluid Bucket",
+  "itemGroup.headtap.block": "AnvilCraft: HeadTap"
+}

@@ -1,9 +1,0 @@
-{
-  "block.head_tap.amethyst_anvil": "紫水晶砧",
-  "block.head_tap.stone_generator": "造石机",
-  "item.head_tap.amethyst_hammer": "紫水晶锤",
-  "itemGroup.head_tap.block": "铁砧工艺: 敲你脑袋",
-  "block.head_tap.excavator": "刨根器",
-  "gui.head_tap.category.stone_generator": "造石机生成",
-  "item.head_tap.amethyst_hammer.tooltip": "晶体易碎，伤害更高"
-}

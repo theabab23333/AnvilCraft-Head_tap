@@ -1,0 +1,5 @@
+{
+  "parent": "neoforge:item/bucket_drip",
+  "fluid": "headtap:resin_fluid",
+  "loader": "neoforge:fluid_container"
+}

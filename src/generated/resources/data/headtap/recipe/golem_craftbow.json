@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "anvilcraft:block_placer"
+    },
+    "C": {
+      "item": "minecraft:crossbow"
+    },
+    "D": {
+      "item": "minecraft:dispenser"
+    },
+    "P": {
+      "item": "minecraft:carved_pumpkin"
+    },
+    "X": {
+      "item": "minecraft:shears"
+    }
+  },
+  "pattern": [
+    "APA",
+    "ADA",
+    "XC "
+  ],
+  "result": {
+    "count": 1,
+    "id": "headtap:golem_craftbow"
+  }
+}

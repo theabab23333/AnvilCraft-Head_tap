@@ -1,0 +1,15 @@
+{
+  "type": "anvilcraft:golem_craftbow",
+  "input": {
+    "count": 2,
+    "id": "minecraft:snow_block"
+  },
+  "result": "minecraft:snow_golem",
+  "tagModifications": [
+    {
+      "op": "SET",
+      "path": "",
+      "tag": "{\n    Pumpkin: 0b\n}"
+    }
+  ]
+}

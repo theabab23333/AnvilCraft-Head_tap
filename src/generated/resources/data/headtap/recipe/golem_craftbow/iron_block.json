@@ -1,0 +1,15 @@
+{
+  "type": "anvilcraft:golem_craftbow",
+  "input": {
+    "count": 4,
+    "id": "minecraft:iron_block"
+  },
+  "result": "minecraft:iron_golem",
+  "tagModifications": [
+    {
+      "op": "SET",
+      "path": "",
+      "tag": "{\n    PlayerCreated: 1b\n}"
+    }
+  ]
+}

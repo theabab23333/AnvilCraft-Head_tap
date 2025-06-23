@@ -1,0 +1,13 @@
+{
+  "block.headtap.amethyst_anvil": "紫水晶砧",
+  "block.headtap.stone_generator": "造石机",
+  "item.headtap.amethyst_hammer": "紫水晶锤",
+  "itemGroup.headtap.block": "铁砧工艺: 敲你脑袋",
+  "item.headtap.golem_craftbow": "傀儡工造弩",
+  "block.headtap.resin_fluid_cauldron": "装有液态树脂的炼药锅",
+  "item.headtap.resin_fluid_bucket": "液态树脂桶",
+  "gui.head_tap.category.stone_generator": "造石机生成",
+  "item.head_tap.amethyst_hammer.tooltip": "晶体易碎,伤害更高",
+  "item.head_tap.golem_craftbow.golem_fail": "Don't have enough materials to craft a golem.",
+  "item.head_tap.golem_craftbow.tooltip": "Right click to heal nearby Iron Golems with Iron Ingots. \n Shift + Right click to summon golems with material blocks."
+}

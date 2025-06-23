@@ -1,9 +1,0 @@
-{
-  "block.head_tap.amethyst_anvil": "Amethyst Anvil",
-  "block.head_tap.excavator": "Excavator",
-  "block.head_tap.stone_generator": "Stone Generator",
-  "gui.head_tap.category.stone_generator": "Stone Generator",
-  "item.head_tap.amethyst_hammer": "Amethyst Hammer",
-  "item.head_tap.amethyst_hammer.tooltip": "Fragile crystal, deals more damage.",
-  "itemGroup.head_tap.block": "AnvilCraft: HeadTap"
-}

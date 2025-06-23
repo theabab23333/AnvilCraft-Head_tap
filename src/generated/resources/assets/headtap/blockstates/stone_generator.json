@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "headtap:block/stone_generator"
+    },
+    "facing=north": {
+      "model": "headtap:block/stone_generator",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "headtap:block/stone_generator",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "headtap:block/stone_generator"
+    }
+  }
+}

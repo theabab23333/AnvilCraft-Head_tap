@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_placer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "anvilcraft:block_placer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_carved_pumpkin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:carved_pumpkin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_crossbow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:crossbow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "headtap:golem_craftbow"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_block_placer",
+      "has_carved_pumpkin",
+      "has_crossbow"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "headtap:golem_craftbow"
+    ]
+  }
+}

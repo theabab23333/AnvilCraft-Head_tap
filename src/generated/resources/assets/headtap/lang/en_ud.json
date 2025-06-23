@@ -1,0 +1,13 @@
+{
+  "block.headtap.amethyst_anvil": "ןıʌuⱯ ʇsʎɥʇǝɯⱯ",
+  "block.headtap.resin_fluid_cauldron": "uoɹpןnɐƆ pınןℲ uısǝᴚ",
+  "block.headtap.stone_generator": "ɹoʇɐɹǝuǝ⅁ ǝuoʇS",
+  "gui.head_tap.category.stone_generator": "ɹoʇɐɹǝuǝ⅁ ǝuoʇS",
+  "item.head_tap.amethyst_hammer.tooltip": "˙ǝbɐɯɐp ǝɹoɯ sןɐǝp 'ןɐʇsʎɹɔ ǝןıbɐɹℲ",
+  "item.head_tap.golem_craftbow.golem_fail": "˙ɯǝןob ɐ ʇɟɐɹɔ oʇ sןɐıɹǝʇɐɯ ɥbnouǝ ǝʌɐɥ ʇ,uoᗡ",
+  "item.head_tap.golem_craftbow.tooltip": "˙sʞɔoןq ןɐıɹǝʇɐɯ ɥʇıʍ sɯǝןob uoɯɯns oʇ ʞɔıןɔ ʇɥbıᴚ + ʇɟıɥS \n ˙sʇobuI uoɹI ɥʇıʍ sɯǝןo⅁ uoɹI ʎqɹɐǝu ןɐǝɥ oʇ ʞɔıןɔ ʇɥbıᴚ",
+  "item.headtap.amethyst_hammer": "ɹǝɯɯɐH ʇsʎɥʇǝɯⱯ",
+  "item.headtap.golem_craftbow": "ʍoqʇɟɐɹƆ ɯǝןo⅁",
+  "item.headtap.resin_fluid_bucket": "ʇǝʞɔnᗺ pınןℲ uısǝᴚ",
+  "itemGroup.headtap.block": "dɐ⟘pɐǝH :ʇɟɐɹƆןıʌuⱯ"
+}
