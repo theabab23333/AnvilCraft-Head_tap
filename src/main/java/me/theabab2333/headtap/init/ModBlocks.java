@@ -1,4 +1,4 @@
-package me.theabab2333.headtap.init;
+package me.theabab2333.head_tap.init;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -9,6 +9,7 @@ import dev.dubhe.anvilcraft.util.registrater.ModelProviderUtil;
 import me.theabab2333.headtap.block.AmethystAnvilBlock;
 import me.theabab2333.headtap.block.ResinFluidCauldron;
 import me.theabab2333.headtap.block.StoneGeneratorBlock;
+import me.theabab2333.headtap.init.ModFluids;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.BlockTags;

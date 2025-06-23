@@ -1,4 +1,4 @@
-package me.theabab2333.head_tap.mixin;
+package me.theabab2333.headtap.mixin;
 
 import dev.dubhe.anvilcraft.event.CapabilitiesEventListener;
 import dev.dubhe.anvilcraft.init.ModBlockEntities;
