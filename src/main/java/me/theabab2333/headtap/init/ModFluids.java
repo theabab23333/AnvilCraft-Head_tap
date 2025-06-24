@@ -48,7 +48,7 @@ public class ModFluids {
         () -> new BaseFlowingFluid.Flowing(ModFluids.RESIN_FLUID_PROPERTIES)
     );
     public static final BaseFlowingFluid.Properties RESIN_FLUID_PROPERTIES = new BaseFlowingFluid.Properties(RESIN_FLUID_TYPE, RESIN_FLUID, FLOWING_RESIN_FLUID)
-        .block(me.theabab2333.head_tap.init.ModBlocks.RESIN_FLUID)
+        .block(ModBlocks.RESIN_FLUID)
         .bucket(ModItems.RESIN_FLUID_BUCKET)
         .tickRate(32)
         .levelDecreasePerBlock(2)
