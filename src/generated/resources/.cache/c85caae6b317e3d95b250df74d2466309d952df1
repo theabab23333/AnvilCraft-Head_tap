@@ -1,9 +1,4 @@
-// 1.21.1	2025-06-24T11:45:41.6315336	Registrate Provider for headtap [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
-4b81045b5db479868e0ab75ea6317ad6a804cf64 assets/headtap/blockstates/resin_fluid.json
 0ee574b60c7c7954334ad898b35e7ce365388eb5 assets/headtap/blockstates/stone_generator.json
-4539a978c9dc1a5bf13273e273e64054c9a5c35b assets/headtap/lang/en_ud.json
-079162287ef80c6bed9e7700b1f623495e700f09 assets/headtap/lang/en_us.json
-3cea681c2c4069d99cab4c809243b4b197a736c6 assets/headtap/models/block/resin_fluid.json
 39a2d6c60beec5488168892b2693bb1abd1d99b1 assets/headtap/models/block/stone_generator.json
 62f37cb42a659caaa49f16684de70a3d71914d51 assets/headtap/models/item/amethyst_anvil.json
 74b67efdbaa2809c526c2a579190da1f5925ea39 assets/headtap/models/item/resin_fluid_bucket.json
