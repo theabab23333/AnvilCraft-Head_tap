@@ -1,7 +1,7 @@
 {
 	"credit": "紫水晶砧",
-	"render_type": "minecraft:translucent",
 	"parent": "block/block",
+	"render_type": "minecraft:translucent",
 	"textures": {
 		"png": "headtap:block/amethyst_anvil",
 		"particle":"headtap:block/amethyst_anvil"

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "headtap:block/resin_extractor"
+        }
+    }
+}

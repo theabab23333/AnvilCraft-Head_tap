@@ -1,5 +1,6 @@
 package me.theabab2333.headtap.block;
 
+import dev.dubhe.anvilcraft.api.hammer.IHammerRemovable;
 import dev.dubhe.anvilcraft.block.better.BetterAnvilBlock;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class AmethystAnvilBlock extends BetterAnvilBlock {
+public class AmethystAnvilBlock extends BetterAnvilBlock implements IHammerRemovable {
     private static final VoxelShape BASE = Block.box(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
     private static final VoxelShape X_LEG = Block.box(4.0, 4.0, 6.0, 12.0, 10.0, 10.0);
     private static final VoxelShape X_TOP = Block.box(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);

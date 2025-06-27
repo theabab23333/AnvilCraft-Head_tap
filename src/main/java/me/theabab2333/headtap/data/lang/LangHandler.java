@@ -6,5 +6,6 @@ public class LangHandler {
     public static void init(RegistrateLangProvider provider) {
         JeiLang.init(provider);
         ItemTooltipLang.init(provider);
+        OtherLang.init(provider);
     }
 }

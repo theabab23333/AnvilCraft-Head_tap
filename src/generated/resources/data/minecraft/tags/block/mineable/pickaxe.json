@@ -2,6 +2,7 @@
   "values": [
     "headtap:amethyst_anvil",
     "headtap:stone_generator",
+    "headtap:resin_extractor",
     "headtap:resin_fluid_cauldron"
   ]
 }

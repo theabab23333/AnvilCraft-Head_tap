@@ -28,7 +28,7 @@ public class AmethystAnvilHammer extends AnvilHammerItem {
     public void appendHoverText(
         ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-        pTooltipComponents.add(Component.translatable("item.head_tap.amethyst_hammer.tooltip")
+        pTooltipComponents.add(Component.translatable("item.headtap.amethyst_hammer.tooltip")
             .withStyle(ChatFormatting.GRAY));
     }
 

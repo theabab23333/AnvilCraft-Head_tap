@@ -138,7 +138,7 @@ public class GolemCraftbow extends Item {
             }
             else if (interactionResult == InteractionResult.FAIL){
                 player.displayClientMessage(
-                    Component.translatable("item.head_tap.golem_craftbow.golem_fail")
+                    Component.translatable("message.headtap.golem_craftbow.golem_fail")
                         .withStyle(ChatFormatting.GRAY),
                     false);
             }
@@ -148,7 +148,7 @@ public class GolemCraftbow extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable("item.head_tap.golem_craftbow.tooltip")
+        tooltipComponents.add(Component.translatable("item.headtap.golem_craftbow.tooltip")
             .withStyle(ChatFormatting.GRAY));
     }
 }

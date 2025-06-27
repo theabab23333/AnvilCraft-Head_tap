@@ -11,19 +11,22 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.AbstractCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class ResinFluidCauldron extends BetterAbstractCauldronBlock implements IHammerRemovable {
+public class ResinFluidCauldronBlock extends BetterAbstractCauldronBlock implements IHammerRemovable{
 
-    public ResinFluidCauldron(Properties properties) {
+    public ResinFluidCauldronBlock(Properties properties) {
         super(properties, ModInteractionMap.RESIN_FLUID);
     }
 
@@ -45,8 +48,19 @@ public class ResinFluidCauldron extends BetterAbstractCauldronBlock implements I
     }
 
     @Override
+    public ItemStack getCloneItemStack(
+        BlockState state,
+        HitResult target,
+        LevelReader level,
+        BlockPos pos,
+        Player player
+    ) {
+        return new ItemStack(Items.CAULDRON);
+    }
+
+    @Override
     protected MapCodec<? extends AbstractCauldronBlock> codec() {
-        return simpleCodec(ResinFluidCauldron::new);
+        return simpleCodec(ResinFluidCauldronBlock::new);
     }
 
     @Override

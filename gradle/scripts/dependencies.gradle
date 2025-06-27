@@ -10,7 +10,7 @@ dependencies {
     // Curios API
     api("top.theillusivec4.curios:curios-neoforge:${curios_version}")
 
-    //JEI
+    // JEI
     compileOnlyApi("mezz.jei:jei-1.21.1-common-api:${jei_version}") { transitive = false }
     compileOnlyApi("mezz.jei:jei-1.21.1-neoforge-api:${jei_version}") { transitive = false }
     implementation("mezz.jei:jei-1.21.1-neoforge:${jei_version}") { transitive = false }
@@ -21,4 +21,7 @@ dependencies {
 
     //Modpack-AE2&Guideme
     implementation("org.appliedenergistics:appliedenergistics2:${ae2_version}")
+
+    // Create
+//    runtimeOnly("com.simibubi.create:create-${minecraft_version}:6.0.6-98:slim") { transitive = false }
 }

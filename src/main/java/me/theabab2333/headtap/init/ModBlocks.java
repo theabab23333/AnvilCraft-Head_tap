@@ -2,11 +2,14 @@ package me.theabab2333.headtap.init;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import dev.dubhe.anvilcraft.data.AnvilCraftDatagen;
 import dev.dubhe.anvilcraft.init.ModBlockTags;
-import dev.dubhe.anvilcraft.util.registrater.BlockStatProviderUtil;
+import dev.dubhe.anvilcraft.init.ModItems;
+import dev.dubhe.anvilcraft.util.DataGenUtil;
 import dev.dubhe.anvilcraft.util.registrater.ModelProviderUtil;
 import me.theabab2333.headtap.block.AmethystAnvilBlock;
-import me.theabab2333.headtap.block.ResinFluidCauldron;
+import me.theabab2333.headtap.block.ResinExtractorBlock;
+import me.theabab2333.headtap.block.ResinFluidCauldronBlock;
 import me.theabab2333.headtap.block.StoneGeneratorBlock;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -30,60 +33,89 @@ public class ModBlocks {
     }
 
     public static final BlockEntry<? extends Block> AMETHYST_ANVIL = REGISTRATE
-            .block("amethyst_anvil", AmethystAnvilBlock::new)
-            .recipe((c, p) ->
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get())
-                            .pattern("AAA")
-                            .pattern(" B ")
-                            .pattern("BBB")
-                            .define('A', Items.AMETHYST_BLOCK)
-                            .define('B', Items.AMETHYST_SHARD)
-                            .unlockedBy("has_amethyst_shard", RegistrateRecipeProvider.has(Items.AMETHYST_SHARD))
-                            .unlockedBy("has_amethyst_block", RegistrateRecipeProvider.has(Items.AMETHYST_BLOCK))
-                            .save(p)
-            )
-            .initialProperties(() -> Blocks.ANVIL)
-            .initialProperties(() -> Blocks.AMETHYST_BLOCK)
-            .properties(p -> p.lightLevel(p_152632_ -> 5))
-            .properties(p -> p.sound(SoundType.AMETHYST))
-            .blockstate((c, p) -> {
-            })
-            .item()
-            .build()
-            .tag(
-                    ModBlockTags.HAMMER_CHANGEABLE,
-                    ModBlockTags.HAMMER_REMOVABLE,
-                    BlockTags.ANVIL,
-                    BlockTags.MINEABLE_WITH_PICKAXE,
-                    BlockTags.NEEDS_STONE_TOOL)
-            .register();
+        .block("amethyst_anvil", AmethystAnvilBlock::new)
+        .recipe((c, p) ->
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get())
+                    .pattern("AAA")
+                    .pattern(" B ")
+                    .pattern("BBB")
+                    .define('A', Items.AMETHYST_BLOCK)
+                    .define('B', Items.AMETHYST_SHARD)
+                    .unlockedBy(AnvilCraftDatagen.hasItem(Items.AMETHYST_SHARD), RegistrateRecipeProvider.has(Items.AMETHYST_SHARD))
+                    .unlockedBy(AnvilCraftDatagen.hasItem(Items.AMETHYST_BLOCK), RegistrateRecipeProvider.has(Items.AMETHYST_BLOCK))
+                    .save(p)
+        )
+        .tag(
+            BlockTags.ANVIL,
+            BlockTags.MINEABLE_WITH_PICKAXE)
+        .initialProperties(() -> Blocks.ANVIL)
+        .initialProperties(() -> Blocks.AMETHYST_BLOCK)
+        .properties(p -> p.lightLevel(p_152632_ -> 5))
+        .properties(p -> p.sound(SoundType.AMETHYST))
+        .blockstate((c, p) -> {})
+        .item()
+        .build()
+        .blockstate(DataGenUtil::noExtraModelOrState)
+        .register();
+
     public static final BlockEntry<StoneGeneratorBlock> STONE_GENERATOR = REGISTRATE
-            .block("stone_generator", StoneGeneratorBlock::new)
-            .recipe((c, p) ->
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get())
-                            .pattern("ABA")
-                            .pattern("C C")
-                            .pattern("ADA")
-                            .define('A', Items.COPPER_INGOT)
-                            .define('B', Items.AMETHYST_SHARD)
-                            .define('C', Blocks.GLASS)
-                            .define('D', Blocks.STONECUTTER)
-                            .unlockedBy("has_copper_ingot", RegistrateRecipeProvider.has(Items.COPPER_INGOT))
-                            .unlockedBy("has_amethyst_shard", RegistrateRecipeProvider.has(Items.AMETHYST_SHARD))
-                            .unlockedBy("has_glass", RegistrateRecipeProvider.has(Blocks.GLASS))
-                            .unlockedBy("has_stonecutter", RegistrateRecipeProvider.has(Blocks.STONECUTTER))
-                            .save(p)
-                    )
-            .properties(p -> p.sound(SoundType.COPPER).strength(3))
-            .tag(
-                    ModBlockTags.HAMMER_REMOVABLE,
-                    ModBlockTags.HAMMER_CHANGEABLE,
-                    BlockTags.MINEABLE_WITH_PICKAXE,
-                    BlockTags.NEEDS_STONE_TOOL
-            )
-            .item()
-            .build()
-            .register();
+        .block("stone_generator", StoneGeneratorBlock::new)
+        .blockstate(DataGenUtil::noExtraModelOrState)
+        .simpleItem()
+        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+        .properties(p -> p.sound(SoundType.COPPER))
+        .recipe((ctx, provider) -> {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
+                .pattern("ABA")
+                .pattern("CDC")
+                .pattern("AEA")
+                .define('A', Items.IRON_INGOT)
+                .define('B', dev.dubhe.anvilcraft.init.ModBlocks.CRUSHING_TABLE)
+                .define('C', ModItems.MAGNET_INGOT)
+                .define('D', Items.AMETHYST_SHARD)
+                .define('E', Items.STONECUTTER)
+                .unlockedBy(AnvilCraftDatagen.hasItem(Items.IRON_INGOT), RegistrateRecipeProvider.has(Items.IRON_INGOT))
+                .unlockedBy(AnvilCraftDatagen.hasItem(dev.dubhe.anvilcraft.init.ModBlocks.CRUSHING_TABLE),
+                    RegistrateRecipeProvider.has(dev.dubhe.anvilcraft.init.ModBlocks.CRUSHING_TABLE))
+                .unlockedBy(AnvilCraftDatagen.hasItem(ModItems.MAGNET_INGOT), RegistrateRecipeProvider.has(ModItems.MAGNET_INGOT))
+                .unlockedBy(AnvilCraftDatagen.hasItem(Items.AMETHYST_SHARD), RegistrateRecipeProvider.has(Items.AMETHYST_SHARD))
+                .unlockedBy(AnvilCraftDatagen.hasItem(Items.STONECUTTER), RegistrateRecipeProvider.has(Items.STONECUTTER))
+                .save(provider);
+        })
+        .register();
+
+    public static final BlockEntry<ResinExtractorBlock> RESIN_EXTRACTOR = REGISTRATE
+        .block("resin_extractor", ResinExtractorBlock::new)
+        .blockstate(DataGenUtil::noExtraModelOrState)
+        .simpleItem()
+        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+        .properties(p -> p.sound(SoundType.COPPER))
+        .recipe((ctx, provider) -> {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
+                .pattern("AAA")
+                .pattern("BCB")
+                .pattern("AAA")
+                .define('A', Items.IRON_INGOT)
+                .define('B', ModItems.RESIN)
+                .define('C', dev.dubhe.anvilcraft.init.ModBlocks.CRUSHING_TABLE)
+                .unlockedBy(AnvilCraftDatagen.hasItem(Items.IRON_INGOT), AnvilCraftDatagen.has(Items.IRON_INGOT))
+                .unlockedBy(AnvilCraftDatagen.hasItem(ModItems.RESIN), AnvilCraftDatagen.has(ModItems.RESIN))
+                .unlockedBy(
+                    AnvilCraftDatagen.hasItem(dev.dubhe.anvilcraft.init.ModBlocks.CRUSHING_TABLE),
+                    AnvilCraftDatagen.has(dev.dubhe.anvilcraft.init.ModBlocks.CRUSHING_TABLE))
+                .save(provider);
+        })
+        .register();
+
+    public static final BlockEntry<ResinFluidCauldronBlock> RESIN_FLUID_CAULDRON = REGISTRATE
+        .block("resin_fluid_cauldron", ResinFluidCauldronBlock::new)
+        .initialProperties(() -> Blocks.CAULDRON)
+        .blockstate(DataGenUtil::noExtraModelOrState)
+        .loot((tables, block) -> tables.dropOther(block, Items.CAULDRON))
+        .tag(BlockTags.MINEABLE_WITH_PICKAXE,
+            BlockTags.CAULDRONS)
+        .onRegister(block -> Item.BY_BLOCK.put(block, Items.CAULDRON))
+        .register();
 
     public static BlockEntry<LiquidBlock> RESIN_FLUID = REGISTRATE
         .block("resin_fluid", p -> new LiquidBlock(ModFluids.RESIN_FLUID.get(), p))
@@ -98,16 +130,6 @@ public class ModBlocks {
             .strength(100.0F)
         )
         .blockstate(ModelProviderUtil::liquid)
-        .register();
-
-    public static final BlockEntry<ResinFluidCauldron> RESIN_FLUID_CAULDRON = REGISTRATE
-        .block("resin_fluid_cauldron", ResinFluidCauldron::new)
-        .initialProperties(() -> Blocks.CAULDRON)
-        .blockstate(BlockStatProviderUtil::none)
-        .loot((tables, block) -> tables.dropOther(block, Items.CAULDRON))
-        .tag(BlockTags.MINEABLE_WITH_PICKAXE,
-            BlockTags.CAULDRONS)
-        .onRegister(block -> Item.BY_BLOCK.put(block, Items.CAULDRON))
         .register();
     public static void register() {}
 }

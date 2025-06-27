@@ -21,4 +21,8 @@ repositories {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
+    maven { // Create
+        name = "Create Maven"
+        url = "https://maven.createmod.net"
+    }
 }

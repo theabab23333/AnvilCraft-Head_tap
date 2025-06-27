@@ -1,6 +1,7 @@
 package me.theabab2333.headtap.block;
 
 import com.mojang.serialization.MapCodec;
+import dev.dubhe.anvilcraft.api.hammer.IHammerRemovable;
 import dev.dubhe.anvilcraft.block.better.BetterBaseEntityBlock;
 import me.theabab2333.headtap.block.entity.StoneGeneratorBlockEntity;
 import me.theabab2333.headtap.init.ModBlockEntities;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -22,19 +24,38 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.items.IItemHandler;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class StoneGeneratorBlock extends BetterBaseEntityBlock {
+public class StoneGeneratorBlock extends BetterBaseEntityBlock implements IHammerRemovable {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public StoneGeneratorBlock(Properties Properties) {
         super(Properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+    }
+
+    public static VoxelShape SHAPE =
+        Shapes.or(
+            Block.box(0, 14, 0, 16, 16, 16),
+            Block.box(2, 2, 2, 14, 14, 14),
+            Block.box(0, 0, 0, 16, 2, 16)
+        );
+
+    @Override
+    public VoxelShape getShape(
+        BlockState state,
+        BlockGetter level,
+        BlockPos pos,
+        CollisionContext context) {
+        return SHAPE;
     }
 
     protected MapCodec<? extends BaseEntityBlock> codec() {

@@ -3,7 +3,7 @@
   "render_type": "minecraft:translucent",
   "textures": {
     "bottom": "minecraft:block/cauldron_bottom",
-    "content": "headtap:block/resin_fluid",
+    "content": "anvilcraft:block/resin_block",
     "inside": "minecraft:block/cauldron_inner",
     "particle": "minecraft:block/cauldron_side",
     "side": "minecraft:block/cauldron_side",

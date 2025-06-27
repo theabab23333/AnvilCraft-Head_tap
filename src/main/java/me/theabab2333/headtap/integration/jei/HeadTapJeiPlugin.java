@@ -1,10 +1,11 @@
 package me.theabab2333.headtap.integration.jei;
 
-import dev.dubhe.anvilcraft.AnvilCraft;
 import me.theabab2333.headtap.HeadTap;
+import me.theabab2333.headtap.init.ModBlocks;
 import me.theabab2333.headtap.recipe.StoneGeneratorRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.recipe.RecipeType;
@@ -13,6 +14,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
@@ -23,7 +25,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public class HeadTapJeiPlugin implements IModPlugin {
 
-    public static final RecipeType<RecipeHolder<StoneGeneratorRecipe>> STONE_GENERATOR = createRecipeHolderType("stone_generator");
+    public static final RecipeType<RecipeHolder<StoneGeneratorRecipe>> STONE_GENERATOR =
+        createRecipeHolderType("stone_generator");
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -38,6 +41,8 @@ public class HeadTapJeiPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         StoneGeneratorCategory.registerRecipeCatalysts(registration);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.AMETHYST_ANVIL), RecipeTypes.ANVIL);
     }
 
     @Override
@@ -48,12 +53,7 @@ public class HeadTapJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(new StoneGeneratorCategory(guiHelper));
     }
 
-    public static <T> RecipeType<T> createRecipeType(String name, Class<T> clazz) {
-        return new RecipeType<>(AnvilCraft.of(name), clazz);
-    }
-
     public static <R extends Recipe<?>> RecipeType<RecipeHolder<R>> createRecipeHolderType(String name) {
         return RecipeType.createRecipeHolderType(HeadTap.of(name));
-
     }
 }

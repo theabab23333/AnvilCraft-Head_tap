@@ -3,22 +3,25 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:iron_ingot"
     },
     "B": {
-      "item": "minecraft:amethyst_shard"
+      "item": "anvilcraft:crushing_table"
     },
     "C": {
-      "item": "minecraft:glass"
+      "item": "anvilcraft:magnet_ingot"
     },
     "D": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
       "item": "minecraft:stonecutter"
     }
   },
   "pattern": [
     "ABA",
-    "C C",
-    "ADA"
+    "CDC",
+    "AEA"
   ],
   "result": {
     "count": 1,
