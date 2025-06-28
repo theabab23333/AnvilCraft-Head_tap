@@ -15,7 +15,7 @@ public class GolemCraftRecipeLoader {
             .tagModification(b -> {
                 CompoundTag tag = new CompoundTag();
                 tag.putBoolean("PlayerCreated", true);
-                b.operation(TagModification.ModifyOperation.SET)
+                b.operation(TagModification.ModifyOperation.ROOT_SET)
                     .path("")
                     .value(tag);
             })
@@ -26,7 +26,7 @@ public class GolemCraftRecipeLoader {
             .tagModification(b -> {
                 CompoundTag tag = new CompoundTag();
                 tag.putBoolean("Pumpkin", false);
-                b.operation(TagModification.ModifyOperation.SET)
+                b.operation(TagModification.ModifyOperation.ROOT_SET)
                     .path("")
                     .value(tag);
             })

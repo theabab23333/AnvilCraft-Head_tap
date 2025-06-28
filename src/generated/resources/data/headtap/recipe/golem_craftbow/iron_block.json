@@ -7,7 +7,7 @@
   "result": "minecraft:iron_golem",
   "tagModifications": [
     {
-      "op": "SET",
+      "op": "ROOT_SET",
       "path": "",
       "tag": "{\n    PlayerCreated: 1b\n}"
     }

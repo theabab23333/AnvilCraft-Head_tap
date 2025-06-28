@@ -16,7 +16,7 @@ dependencies {
     implementation("mezz.jei:jei-1.21.1-neoforge:${jei_version}") { transitive = false }
 
     // Jade & Patchouli
-    runtimeOnly("maven.modrinth:jade:15.10.0+neoforge")
+    runtimeOnly("maven.modrinth:jade:15.3.4+neoforge")
     runtimeOnly("maven.modrinth:patchouli:1.21-87-neoforge")
 
     //Modpack-AE2&Guideme

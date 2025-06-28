@@ -7,7 +7,7 @@
   "result": "minecraft:snow_golem",
   "tagModifications": [
     {
-      "op": "SET",
+      "op": "ROOT_SET",
       "path": "",
       "tag": "{\n    Pumpkin: 0b\n}"
     }

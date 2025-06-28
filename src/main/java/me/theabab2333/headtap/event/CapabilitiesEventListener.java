@@ -12,14 +12,15 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = HeadTap.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = HeadTap.MODID)
 public class CapabilitiesEventListener {
     @SubscribeEvent
     public static void registerCapabilities(final RegisterCapabilitiesEvent event) {
 
         // ItemHandler
         List.of(
-            ModBlockEntities.STONE_GENERATOR.get()
+            ModBlockEntities.STONE_GENERATOR.get(),
+            dev.dubhe.anvilcraft.init.ModBlockEntities.CRAB_TRAP.get()
         ).forEach(type -> event.registerBlockEntity(
             Capabilities.ItemHandler.BLOCK,
             type,
