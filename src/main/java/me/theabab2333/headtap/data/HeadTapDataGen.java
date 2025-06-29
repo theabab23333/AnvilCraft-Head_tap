@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static me.theabab2333.headtap.HeadTap.REGISTRATE;
 
-@EventBusSubscriber(modid = HeadTap.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = HeadTap.MODID)
 public class HeadTapDataGen {
 
     @SubscribeEvent
