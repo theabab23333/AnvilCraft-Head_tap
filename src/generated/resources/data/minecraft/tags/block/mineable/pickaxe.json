@@ -3,6 +3,7 @@
     "headtap:amethyst_anvil",
     "headtap:stone_generator",
     "headtap:resin_extractor",
+    "headtap:variable_fluid_tank",
     "headtap:resin_fluid_cauldron"
   ]
 }

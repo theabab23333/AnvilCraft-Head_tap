@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "headtap:block/variable_fluid_tank"
+    }
+  }
+}

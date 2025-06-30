@@ -23,5 +23,5 @@ dependencies {
     implementation("org.appliedenergistics:appliedenergistics2:${ae2_version}")
 
     // Create
-//    runtimeOnly("com.simibubi.create:create-${minecraft_version}:6.0.6-98:slim") { transitive = false }
+    compileOnly("com.simibubi.create:create-${minecraft_version}:6.0.4-61") { transitive = false }
 }

@@ -62,7 +62,7 @@ public class ResinExtractorBlockEntity extends BlockEntity {
         Fluid resinType = getFluidType();
         if (resinType == Fluids.EMPTY) return false;
         int fluidAmount = this.tank.getFluidAmount();
-        int addAmount = count*100 + fluidAmount;
+        int addAmount = count * 25 + fluidAmount;
         //我很菜(
         if (addAmount <= tank.getCapacity()) {
             tank.setFluid(new FluidStack(resinType, addAmount));

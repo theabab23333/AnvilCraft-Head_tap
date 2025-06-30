@@ -12,5 +12,6 @@
   "item.headtap.golem_craftbow.tooltip": "Right click to heal nearby Iron Golems with Iron Ingots. \n Shift + Right click to summon golems with material blocks.",
   "block.headtap.resin_fluid": "液态树脂",
   "block.headtap.resin_extractor": "树脂提取器",
-  "modmenu.nameTranslation.headtap": "铁砧工艺: 敲你脑袋"
+  "modmenu.nameTranslation.headtap": "铁砧工艺: 敲你脑袋",
+  "block.headtap.variable_fluid_tank": "可变流体储罐"
 }

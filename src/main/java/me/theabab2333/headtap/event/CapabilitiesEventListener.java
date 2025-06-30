@@ -28,12 +28,21 @@ public class CapabilitiesEventListener {
         );
 
         // FluidHandler
+        // 我不会(指合在一起
         List.of(
             ModBlockEntities.RESIN_EXTRACTOR.get()
         ).forEach(type -> event.registerBlockEntity(
             Capabilities.FluidHandler.BLOCK,
             type,
-            (be, context) -> be.getFluidHandler())
+            (be, side) -> be.getFluidHandler())
+        );
+
+        List.of(
+            ModBlockEntities.VARIABLE_FLUID_TANK.get()
+        ).forEach(type -> event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            type,
+            (be, side) -> be.getFluidHandler())
         );
 
         // Other

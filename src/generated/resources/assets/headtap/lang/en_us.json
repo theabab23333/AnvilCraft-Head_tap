@@ -4,6 +4,7 @@
   "block.headtap.resin_fluid": "Resin Fluid",
   "block.headtap.resin_fluid_cauldron": "Resin Fluid Cauldron",
   "block.headtap.stone_generator": "Stone Generator",
+  "block.headtap.variable_fluid_tank": "Variable Fluid Tank",
   "item.headtap.amethyst_hammer": "Amethyst Hammer",
   "item.headtap.amethyst_hammer.tooltip": "Fragile crystal, deals more damage.",
   "item.headtap.golem_craftbow": "Golem Craftbow",
