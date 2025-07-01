@@ -9,7 +9,7 @@
       "fluid": "minecraft:lava"
     }
   ],
-  "priority": 1,
+  "priority": 3,
   "result": {
     "count": 1,
     "id": "minecraft:cobblestone"

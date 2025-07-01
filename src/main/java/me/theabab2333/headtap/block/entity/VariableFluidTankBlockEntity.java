@@ -14,9 +14,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -27,6 +28,7 @@ import java.util.Map;
 @MethodsReturnNonnullByDefault
 public class VariableFluidTankBlockEntity extends BlockEntity implements IPowerConsumer {
     public int power = 16;
+    public int hasVoid = 0;
     private PowerGrid grid;
     public FluidTank tank = new FluidTank(0);
 
@@ -43,20 +45,29 @@ public class VariableFluidTankBlockEntity extends BlockEntity implements IPowerC
         MULTIPLICATION.put(ModBlocks.TRANSCENDIUM_BLOCK.get(), 128);
 
         MULTIPLICATION.put(ModBlocks.MULTIPHASE_MATTER_BLOCK.get(), 0);
+        MULTIPLICATION.put(ModBlocks.VOID_MATTER_BLOCK.get(), 0);
     }
 
     public void gridTick() {
         if (level == null || level.isClientSide()) return;
         int amount = countBlocksInRange();
         if (!grid.isWorking()) return;
-        power = amount/4 + 16;
-        tank.setCapacity(amount * 1000 * 4);
+        power = amount / 8 + 16;
+        int tankCapacity = amount * 1000 * 4;
+        tank.setCapacity(tankCapacity);
+        if (tank.getFluidAmount() >= tankCapacity) tank.setCapacity(tankCapacity);
+        if (hasVoid  != 0 && tank.getFluidAmount() >= tankCapacity ) {
+            FluidStack fluidTank = tank.getFluid();
+            tank.setCapacity(tankCapacity + 16000);
+            fluidTank.setAmount(tankCapacity);
+        }
     }
 
     public int countBlocksInRange() {
         if (level == null || level.isClientSide()) return 0;
         int blockCount = 0;
         int multiplication = 0;
+        int hasVoid = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 for (int k = -1; k <= 1; k++) {
@@ -67,10 +78,14 @@ public class VariableFluidTankBlockEntity extends BlockEntity implements IPowerC
                     if (otherBlock != null) {
                         blockCount++;
                         multiplication = multiplication + otherBlock;
+                        if (otherState.is(ModBlocks.VOID_MATTER_BLOCK.get())) {
+                            hasVoid++;
+                        }
                     }
                 }
             }
         }
+        this.hasVoid = hasVoid;
         return blockCount * multiplication;
     }
 
@@ -83,38 +98,40 @@ public class VariableFluidTankBlockEntity extends BlockEntity implements IPowerC
         super(type, pos, blockState);
     }
 
-    @NotNull
     public static VariableFluidTankBlockEntity createBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         return new VariableFluidTankBlockEntity(type, pos, blockState);
     }
 
-    @Override
-    public void loadAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            ModBlockEntities.VARIABLE_FLUID_TANK.get(),
+            (be, context) -> be.tank
+        );
+    }
+
+    public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
+        tank.readFromNBT(registries, tag);
         this.power = tag.getInt("Power");
     }
 
-    @Override
-    public void saveAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider registries) {
+    public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
+        tank.writeToNBT(registries, tag);
         tag.putInt("Power", this.power);
     }
 
-    public IFluidHandler getFluidHandler() {
-        return tank;
-    }
-    @Override
     public int getInputPower() {
         return power;
     }
 
-    @Override
+    @Nullable
     public Level getCurrentLevel() {
         return level;
     }
 
-    @Override
-    public @NotNull BlockPos getPos() {
+    public BlockPos getPos() {
         return this.getBlockPos();
     }
 
@@ -123,7 +140,6 @@ public class VariableFluidTankBlockEntity extends BlockEntity implements IPowerC
         this.grid = grid;
     }
 
-    @Override
     public PowerGrid getGrid() {
         return this.grid;
     }

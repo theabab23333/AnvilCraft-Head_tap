@@ -1,6 +1,7 @@
 package me.theabab2333.headtap.block.entity;
 
 import dev.dubhe.anvilcraft.api.itemhandler.IItemHandlerHolder;
+import me.theabab2333.headtap.init.ModBlockEntities;
 import me.theabab2333.headtap.init.ModRecipeTypes;
 import me.theabab2333.headtap.recipe.StoneGeneratorRecipe;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -15,6 +16,8 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -45,6 +48,14 @@ public class StoneGeneratorBlockEntity extends BlockEntity implements IItemHandl
 
     public IItemHandler getItemHandler() {
         return itemHandler;
+    }
+
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            ModBlockEntities.STONE_GENERATOR.get(),
+            (be, context) -> be.itemHandler
+        );
     }
 
     public boolean tryGenerateStone(int count) {

@@ -24,6 +24,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -137,8 +138,8 @@ public class StoneGeneratorCategory implements IRecipeCategory<RecipeHolder<Ston
             12,
             RenderHelper.SINGLE_BLOCK);
 
-        if (!recipe.inputFluids.isEmpty() || !recipe.inputBlocks.isEmpty()) {
-            for (int b = 0; b < recipe.inputBlocks.size(); b++) {
+        if (!recipe.inputFluids.isEmpty() && !recipe.inputBlocks.isEmpty()) {
+            for (int b = recipe.inputBlocks.size() - 1; b >= 0; b--) {
                 List.of(
                     recipe.inputBlocks.get(b)
                 ).forEach(block -> RenderHelper.renderBlock(
@@ -164,6 +165,7 @@ public class StoneGeneratorCategory implements IRecipeCategory<RecipeHolder<Ston
                         RenderHelper.SINGLE_BLOCK);
                 });
             }
+        } else if (recipe.inputBlocks.isEmpty()) {
             for (int f = recipe.inputFluids.size() - 1; f >= 0; f--){
                 AtomicReference<BlockState> renderedFluidState = new AtomicReference<>();
                 FluidIngredient fluidState = recipe.inputFluids.get(f);
@@ -182,6 +184,32 @@ public class StoneGeneratorCategory implements IRecipeCategory<RecipeHolder<Ston
                     RenderHelper.renderBlock(
                         guiGraphics,
                         renderedFluidState.get(),
+                        42,
+                        26,
+                        3,
+                        12,
+                        RenderHelper.SINGLE_BLOCK); break;
+                }
+            }
+        } else {
+            for (int b = recipe.inputBlocks.size() - 1; b >= 0; b--) {
+                AtomicReference<BlockState> renderedBlockState = new AtomicReference<>();
+                Block block = recipe.inputBlocks.get(b);
+                BlockState blockState = block.defaultBlockState();
+                renderedBlockState.set(blockState);
+                if (b != 0) {
+                    RenderHelper.renderBlock(
+                        guiGraphics,
+                        renderedBlockState.get(),
+                        58,
+                        34,
+                        17,
+                        12,
+                        RenderHelper.SINGLE_BLOCK);
+                } else {
+                    RenderHelper.renderBlock(
+                        guiGraphics,
+                        renderedBlockState.get(),
                         42,
                         26,
                         3,

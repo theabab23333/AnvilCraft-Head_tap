@@ -1,5 +1,6 @@
 package me.theabab2333.headtap.block.entity;
 
+import me.theabab2333.headtap.init.ModBlockEntities;
 import me.theabab2333.headtap.init.ModBlocks;
 import me.theabab2333.headtap.init.ModFluids;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -16,6 +17,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
@@ -49,12 +52,16 @@ public class ResinExtractorBlockEntity extends BlockEntity {
         tank.readFromNBT(provider, tag);
     }
 
-    public boolean onPlayerUse(Player player, InteractionHand hand) {
-        return FluidUtil.interactWithFluidHandler(player, hand, tank);
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            ModBlockEntities.RESIN_EXTRACTOR.get(),
+            (be, context) -> be.tank
+        );
     }
 
-    public IFluidHandler getFluidHandler() {
-        return tank;
+    public boolean onPlayerUse(Player player, InteractionHand hand) {
+        return FluidUtil.interactWithFluidHandler(player, hand, tank);
     }
 
     public boolean tryGenerateResin(int count) {

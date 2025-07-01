@@ -1,6 +1,7 @@
 package me.theabab2333.headtap.data.recipe;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import me.theabab2333.headtap.init.ModFluids;
 import me.theabab2333.headtap.recipe.StoneGeneratorRecipe;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -12,12 +13,12 @@ public class StoneGeneratorRecipeLoader {
             .requires(Fluids.WATER)
             .requires(Fluids.LAVA)
             .result(Items.COBBLESTONE)
-            .priority(1).save(provider);
+            .priority(3).save(provider);
         StoneGeneratorRecipe.builder()
             .requires(Blocks.ICE)
             .requires(Fluids.LAVA)
             .result(Items.ANDESITE)
-            .priority(2).save(provider);
+            .priority(3).save(provider);
         StoneGeneratorRecipe.builder()
             .requires(Blocks.PACKED_ICE)
             .requires(Fluids.LAVA)
@@ -27,6 +28,6 @@ public class StoneGeneratorRecipeLoader {
             .requires(Blocks.BLUE_ICE)
             .requires(Fluids.LAVA)
             .result(Items.GRANITE)
-            .priority(4).save(provider);
+            .priority(3).save(provider);
     }
 }
